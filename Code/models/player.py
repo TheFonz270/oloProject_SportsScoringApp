@@ -8,14 +8,14 @@ class Player():
         self.pts_against = 0
         self.id = id
 
-    def wins():
-        pass 
+    def winner(self):
+        self.wins += 1
 
-    def losses():
-        pass
+    def loser(self):
+        self.losses += 1
 
-    def increase_pts_for():
-        pass
+    def increase_pts_for(self, pts):
+        self.pts_for += pts
     
-    def increase_pts_against():
-        pass
+    def increase_pts_against(self, pts):
+        self.pts_against += pts
