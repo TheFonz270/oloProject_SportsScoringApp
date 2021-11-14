@@ -23,7 +23,7 @@ class TestGame(unittest.TestCase):
         self.game.input_score(70, 30)
         self.assertEqual([70,30], self.game.score)
 
-    def test_game_reconciliation(self):
+    def test_game_reconciliation_player1_wins(self):
         self.game.input_score(70, 30)
         self.game.reconcile_game()
         self.assertEqual(1,self.player1.wins)
@@ -34,3 +34,15 @@ class TestGame(unittest.TestCase):
         self.assertEqual(30,self.player2.pts_for)
         self.assertEqual(True, self.game.completed)
 
+    def test_game_reconciliation_player_wins(self):
+        self.game.input_score(30, 70)
+        self.game.reconcile_game()
+        self.assertEqual(0,self.player1.wins)
+        self.assertEqual(0,self.player2.losses)
+        self.assertEqual(1,self.player2.wins)
+        self.assertEqual(1,self.player1.losses)
+        self.assertEqual(70,self.player2.pts_for)
+        self.assertEqual(70,self.player1.pts_against)
+        self.assertEqual(30,self.player2.pts_against)
+        self.assertEqual(30,self.player1.pts_for)
+        self.assertEqual(True, self.game.completed)
