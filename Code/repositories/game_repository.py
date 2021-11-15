@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 
 from models.player import Player
 from models.game import Game
-
+from repositories import player_repository
 
 def delete_all():
     sql = "DELETE FROM games"
@@ -16,3 +16,43 @@ def save(game):
     id = results[0]['id']
     game.id = id
     return game
+
+
+def select_all():
+    games = []
+    sql = "SELECT * FROM games"
+    results = run_sql(sql)
+    for row in results:
+        player1 = player_repository.select(row['player1_id'])
+        player2 = player_repository.select(row['player2_id'])
+        game = Game(player1, player2, [row['score1'], row['score2']], row['completed'], row['id'] )
+        games.append(game)
+    return games
+
+# def select(id):
+#     task = None
+#     sql = "SELECT * FROM tasks WHERE id = %s"
+#     values = [id]
+#     result = run_sql(sql, values)[0]
+
+#     if result is not None:
+#         user = user_repository.select(result['user_id'])
+#         task = Task(result['description'], user, result['duration'], result['completed'], result['id'] )
+#     return task
+
+
+# def delete_all():
+#     sql = "DELETE  FROM tasks"
+#     run_sql(sql)
+
+
+# def delete(id):
+#     sql = "DELETE  FROM tasks WHERE id = %s"
+#     values = [id]
+#     run_sql(sql, values)
+
+
+# def update(task):
+#     sql = "UPDATE tasks SET (description, user_id, duration, completed) = (%s, %s, %s, %s) WHERE id = %s"
+#     values = [task.description, task.user.id, task.duration, task.completed, task.id]
+#     run_sql(sql, values)

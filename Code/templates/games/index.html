@@ -1,4 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-Games Page
+
+{% for game in all_games %}
+    <div class="Game_card">
+        <div class="game_card_top">   
+            <div>
+                <a href="/players/{{game.player1.id}}"><h3>{{game.player1.name}}</h3></a>
+                <p>{{game.player1.army}}</p>
+            </div>
+             <div>    
+                <p>VS</p>
+            </div>
+            <div>    
+            <a href="/players/{{game.player2.id}}"><h3>{{game.player2.name}}</h3></a>
+            <p>{{game.player2.army}}</p>
+            </div>
+        </div>
+        <div class="game_card_mid">
+            <p>{{game.score[0]}} : {{game.score[1]}} </p>
+            {% if game.completeds == True %}
+            <p>Finished</p>
+            {%else%}
+            <p>In Porgess</p>
+            {%endif%}
+        </div>
+        <div class="game_card_footer"></div>
+            <a href="/games/{{game.id}}/edit">Edit</a><form class="delete-form" action="/games/{{game.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
+    </div>
+
+    <div class="sub-footer">
+        <a href="/games/new">Create New Game</a>
+    </div>
+{% endfor %}
+
 {% endblock %}

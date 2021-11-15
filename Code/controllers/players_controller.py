@@ -29,7 +29,7 @@ def edit_player(id):
 
 # UPDATE
 # PUT '/players/<id>'
-@players_blueprint.route("/players/<id>/edit", methods=['POST'])
+@players_blueprint.route("/players/<id>", methods=['POST'])
 def update_player(id):
     name       = request.form['name']
     army       = request.form['army']
@@ -37,7 +37,7 @@ def update_player(id):
     losses     = request.form['losses']
     pts_for    = request.form['pts_for']
     pts_against= request.form['pts_against']
-    player = Player(name, army, wins, losses, pts_for, pts_against)
+    player = Player(name, army, wins, losses, pts_for, pts_against, id)
     player_repository.update(player)
     return redirect('/players')
 
