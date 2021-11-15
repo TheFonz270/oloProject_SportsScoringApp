@@ -20,6 +20,27 @@ def show_player(id):
     player = player_repository.select(id)
     return render_template('players/player.html', player = player)
 
+# EDIT
+# GET '/players/<id>/edit'
+@players_blueprint.route("/players/<id>/edit", methods=['GET'])
+def edit_player(id):
+    player = player_repository.select(id)
+    return render_template('players/edit.html', player = player)
+
+# UPDATE
+# PUT '/players/<id>'
+@players_blueprint.route("/players/<id>/edit", methods=['POST'])
+def update_player(id):
+    name       = request.form['name']
+    army       = request.form['army']
+    wins       = request.form['wins']
+    losses     = request.form['losses']
+    pts_for    = request.form['pts_for']
+    pts_against= request.form['pts_against']
+    player = Player(name, army, wins, losses, pts_for, pts_against)
+    player_repository.update(player)
+    return redirect('/players')
+
 # NEW
 @players_blueprint.route("/players/new", methods=['GET']) 
 def new_player(): 
@@ -34,19 +55,6 @@ def create_player():
     player_repository.save(player)
     return redirect('/players')
 # Receives the data from the form to insert into the database
-
-# UPDATE
-# # PUT '/tasks/<id>'
-# @tasks_blueprint.route("/tasks/<id>", methods=['POST'])
-# def update_task(id):
-#     description = request.form['description']
-#     user_id     = request.form['user_id']
-#     duration    = request.form['duration']
-#     completed   = request.form['completed']
-#     user        = user_repository.select(user_id)
-#     task        = Task(description, user, duration, completed, id)
-#     task_repository.update(task)
-#     return redirect('/tasks')
 
 # DELETE
 @players_blueprint.route("/players/<id>/delete", methods=['POST'])
