@@ -12,8 +12,9 @@
             <p>{{player.wins}}:{{player.losses}}</p>
         </div>
     </div>
-    <div class="card_footer"></div>
+    <div class="card_footer">
         <a href="/players/{{player.id}}/edit">Edit</a><form class="delete-form" action="/players/{{player.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
+    </div>    
 </div>
 
 {% endblock %}

@@ -4,14 +4,14 @@
     <div class="game_card">
         <div class="game_card_top">   
             <div>
-                <a href="/games/{{game.player1.id}}"><h3>{{game.player1.name}}</h3></a>
+                <a href="/players/{{game.player1.id}}"><h3>{{game.player1.name}}</h3></a>
                 <p>{{game.player1.army}}</p>
             </div>
              <div>    
-                <p>VS</p>
+                <p class="vs">VS</p>
             </div>
             <div>    
-            <a href="/games/{{game.player2.id}}"><h3>{{game.player2.name}}</h3></a>
+            <a href="/players/{{game.player2.id}}"><h3>{{game.player2.name}}</h3></a>
             <p>{{game.player2.army}}</p>
             </div>
         </div>
@@ -26,6 +26,7 @@
         <div class="card_footer">
             <a href="/games/{{game.id}}/edit">Edit</a><form class="delete-form" action="/games/{{game.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
         </div>
+    </div>  
 
     <div class="sub-footer">
         <a href="/games/new">Create New Game</a>

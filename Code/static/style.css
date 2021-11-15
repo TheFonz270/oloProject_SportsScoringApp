@@ -33,6 +33,7 @@ nav ul li a:hover {
 h1 {
     font-size: 24px;
     margin:15px 0 10px;
+    color:tomato;
 }
 
 h2 {
@@ -89,13 +90,25 @@ main {
     font-size:16px;
 }
 
-.card_footer a:hover, .card_footer input:hover {
+.card_footer a:hover, .card_footer input:hover, .sub-footer a:hover {
     background-color: #ddd
 }
 
 .sub-footer {
     text-align:center;
     margin-top:20px;
+}
+
+.sub-footer a {
+    display:block;
+    border:1px solid #222;
+    padding:7px;
+    background-color: #bbb;
+    color:#222;
+    text-decoration:none;
+    font-size:16px;
+    width:230px;
+    margin:0 auto;
 }
 
 .game_card_top {
@@ -106,4 +119,39 @@ main {
 .game_card_mid {
     text-align:center;
     padding:8px 0;
+}
+
+.form_page {
+    display:block;
+    width:300px;
+    flex-direction: column;
+    margin:20px auto;
+}
+
+.form_page div {
+    display:flex;
+    flex-direction: column;
+}
+
+.form_page input, .form_page select{
+    margin:5px 0 15px;
+    max-width:300px;
+    font-size:16px;
+}
+
+main {
+    margin:0 auto;
+    padding:0 10px;
+}
+
+main > p {
+    margin-bottom:15px;
+}
+
+main > ol > li {
+    margin-bottom:15px;
+}
+
+.vs {
+    padding-top:7px;
 }
