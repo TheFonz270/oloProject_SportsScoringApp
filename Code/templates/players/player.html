@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="player_card">
     <div class="player_card_top">
         <div class="player_card_left">    
@@ -16,5 +15,34 @@
         <a href="/players/{{player.id}}/edit">Edit</a><form class="delete-form" action="/players/{{player.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
     </div>    
 </div>
+<h2>Player's Games</h2>
+{% for game in player_games %}
+    <div class="game_card">
+        <div class="game_card_top">   
+            <div {% if game.score[0] > game.score[1] and game.completed == True%} class="winner" {%elif game.score[1] > game.score[0] and game.completed == True%} class="loser"{%endif%}>
+                <a href="/games/{{game.id}}"><h3>{{game.player1.name}}</h3></a>
+                <p>{{game.player1.army}}</p>
+            </div>
+             <div>    
+                <p class="vs">VS</p>
+            </div>
+            <div {% if game.score[1]>game.score[0] and game.completed == True%} class="winner" {%elif game.score[1] < game.score[0] and game.completed == True%} class="loser"{%endif%}>    
+            <a href="/games/{{game.id}}"><h3>{{game.player2.name}}</h3></a>
+            <p>{{game.player2.army}}</p>
+            </div>
+        </div>
+        <div class="game_card_mid">
+            <p>{{game.score[0]}} : {{game.score[1]}} </p>
+            {% if game.completed == True %}
+            <p>Finished</p>
+            {%else%}
+            <p>In Progress</p>
+            {%endif%}
+        </div>
+        <div class="card_footer">
+            <a href="/games/{{game.id}}/edit">Edit</a><form class="delete-form" action="/games/{{game.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
+        </div>
+    </div>  
+{% endfor %}
 
 {% endblock %}

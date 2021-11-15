@@ -26,5 +26,4 @@ class Game():
         self.player2.pts_against = self.score[0]
         self.player1.pts_against = self.score[1]
         self.player2.pts_for = self.score[1]
-        pass
             

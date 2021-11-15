@@ -17,7 +17,7 @@ def games():
 
 # NEW
 @games_blueprint.route("/games/new", methods=['GET']) 
-def new_task(): 
+def new_game(): 
     players = player_repository.select_all()
     return render_template("games/new.html", all_players = players)
 
@@ -33,6 +33,10 @@ def create_game():
     player2    = player_repository.select(player2_id)
     game       = Game(player1, player2, [score1, score2], completed)
     game_repository.save(game)
+    if completed == "True":
+        game.reconcile_game()
+        player_repository.update(player1)
+        player_repository.update(player2)
     return redirect('/games')
 # Receives the data from the form to insert into the database
 
@@ -63,6 +67,10 @@ def update_game(id):
     player2    = player_repository.select(player2_id)
     game       = Game(player1, player2, [score1, score2], completed, id)
     game_repository.update(game)
+    if completed == "True":
+        game.reconcile_game()
+        player_repository.update(player1)
+        player_repository.update(player2)
     return redirect('/games')
 
 # DELETE

@@ -18,7 +18,8 @@ def players():
 @players_blueprint.route("/players/<id>", methods=['GET'])
 def show_player(id):
     player = player_repository.select(id)
-    return render_template('players/player.html', player = player)
+    games = game_repository.select_by_player(player)
+    return render_template('players/player.html', player = player, player_games=games)
 
 # EDIT
 # GET '/players/<id>/edit'

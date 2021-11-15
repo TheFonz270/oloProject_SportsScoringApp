@@ -152,6 +152,14 @@ main > ol > li {
     margin-bottom:15px;
 }
 
+.winner h3, .winner p {
+    color:green;
+}
+
+.loser h3, .loser p {
+    color:red;
+}
+
 .vs {
     padding-top:7px;
 }

@@ -12,10 +12,9 @@ def save(game):
     sql = "INSERT INTO games (player1_id, player2_id, score1, score2, completed) VALUES (%s, %s, %s, %s, %s) RETURNING *"
     values = [game.player1.id, game.player2.id, game.score[0], game.score[1], game.completed]
     results = run_sql(sql, values)
-    print(results)
     id = results[0]['id']
     game.id = id
-    return game
+    # return game
 
 
 def select_all():
@@ -27,7 +26,7 @@ def select_all():
         player2 = player_repository.select(row['player2_id'])
         game = Game(player1, player2, [row['score1'], row['score2']], row['completed'], row['id'] )
         games.append(game)
-    return games
+    return sorted(games, key=lambda game: game.id, reverse=True)
 
 def select(id):
     game = None
@@ -40,6 +39,20 @@ def select(id):
         player2 = player_repository.select(result['player2_id'])
         game = Game(player1, player2, [result['score1'], result['score2']], result['completed'], result['id'] )
     return game
+
+def select_by_player(player):
+    games = []
+    sql = "SELECT * FROM games WHERE player1_id = %s OR player2_id = %s"
+    values = [player.id, player.id]
+    results = run_sql(sql, values)
+
+    if results is not None:
+        for row in results:
+            player1 = player_repository.select(row['player1_id'])
+            player2 = player_repository.select(row['player2_id'])
+            game = Game(player1, player2, [row['score1'], row['score2']], row['completed'], row['id'] )
+            games.append(game)
+    return games
 
 
 def delete_all():
@@ -56,5 +69,4 @@ def delete(id):
 def update(game):
     sql = "UPDATE games SET (player1_id, player2_id, score1, score2, completed) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [game.player1.id, game.player2.id, game.score[0], game.score[1], game.completed, game.id]
-    print(values)
     run_sql(sql, values)
