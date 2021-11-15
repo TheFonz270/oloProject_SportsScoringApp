@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/games" method="post">
+    <div>
+        <label for="Player1">Player 1:</label>
+        <select id="player1_id" name="player1_id">
+          {% for player in all_players %} 
+              <option value="{{ player.id }}">{{ player.name }}</option>
+           {% endfor %} 
+        </select>
+    </div>
+    <div>
+        <label for="Player2">Player 2:</label>
+        <select id="player2_id" name="player2_id">
+          {% for player in all_players %} 
+              <option value="{{ player.id }}">{{ player.name }}</option>
+           {% endfor %} 
+        </select>
+    </div>
+    <div>
+      <label for="score1">Player 1 Score:</label>
+      <input type="number" id="score1" name="score1" placeholder="0" required>
+    </div>
+    <div>
+        <label for="score2">Player 2 Score:</label>
+        <input type="number" id="score2" name="score2" placeholder="0" required>
+    </div>
+    <div>
+        <label for="completed">Finished:</label>
+        <select id="completed" name="completed">
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+  
+    <button type="submit">Add Game</button>
+  
+  </form>
+
+{% endblock %}

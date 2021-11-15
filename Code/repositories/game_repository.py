@@ -29,16 +29,17 @@ def select_all():
         games.append(game)
     return games
 
-# def select(id):
-#     task = None
-#     sql = "SELECT * FROM tasks WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
+def select(id):
+    game = None
+    sql = "SELECT * FROM games WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-#     if result is not None:
-#         user = user_repository.select(result['user_id'])
-#         task = Task(result['description'], user, result['duration'], result['completed'], result['id'] )
-#     return task
+    if result is not None:
+        player1 = player_repository.select(result['player1_id'])
+        player2 = player_repository.select(result['player2_id'])
+        game = Game(player1, player2, [result['score1'], result['score2']], result['completed'], result['id'] )
+    return game
 
 
 # def delete_all():
