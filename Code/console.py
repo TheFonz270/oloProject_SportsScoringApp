@@ -15,3 +15,5 @@ player_repository.save(player2)
 
 game1 = Game(player1, player2)
 game_repository.save(game1)
+
+print(player_repository.select_all())

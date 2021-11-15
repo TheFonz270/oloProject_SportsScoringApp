@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="player_card">
+    <div class="player_card_left">    
+        <h3>{{player.name}}</h3>
+        <p>{{player.army}}</p>
+    </div>
+    <div class="player_card_right">
+        <p>Wins : losses</p>
+        <p>{{player.wins}}:{{player.losses}}</p>
+    </div>
+    <div class="player_card_footer"></div>
+        <a href="/books/{{player.id}}/edit">Edit</a><a href="/books/{{player.id}}/delete">Delete</a>
+</div>
+
+{% endblock %}

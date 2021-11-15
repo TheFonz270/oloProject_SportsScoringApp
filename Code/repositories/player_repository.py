@@ -12,27 +12,27 @@ def save(player):
     player.id = id
     return player
 
-# def select_all():
-#     players = []
+def select_all():
+    players = []
 
-#     sql = "SELECT * FROM players"
-#     results = run_sql(sql)
+    sql = "SELECT * FROM players"
+    results = run_sql(sql)
 
-#     for row in results:
-#         player = Player(row['name'], row['id'] )
-#         players.append(player)
-#     return players
+    for row in results:
+        player = Player(row['name'], row['army'], row['wins'], row['losses'], row['pts_for'], row['pts_against'], row['id'] )
+        players.append(player)
+    return players
 
 
-# def select(id):
-#     player = None
-#     sql = "SELECT * FROM players WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
+def select(id):
+    player = None
+    sql = "SELECT * FROM players WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-#     if result is not None:
-#         player = Player(result['name'], result['id'] )
-#     return player
+    if result is not None:
+        player = Player(result['name'], result['army'], result['wins'], result['losses'], result['pts_for'], result['pts_against'], result['id'] )
+    return player
 
 def delete_all():
     sql = "DELETE FROM players"
