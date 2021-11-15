@@ -19,3 +19,8 @@ CREATE TABLE games (
     score2 INT,
     completed BOOLEAN
 );
+
+-- INSERT INTO players (name, army, wins, losses, pts_for, pts_against) VALUES ('Martin', 'Tau', 0, 0, 0, 0);
+-- INSERT INTO players (name, army, wins, losses, pts_for, pts_against) VALUES ('Fraz', 'Death Guard', 0, 0, 0, 0);
+
+-- INSERT INTO games (player1_id, player2_id, score1, score2, completed) VALUES (1, 2, 70, 30, True)
