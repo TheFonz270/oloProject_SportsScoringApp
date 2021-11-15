@@ -53,7 +53,8 @@ def select(id):
 #     run_sql(sql, values)
 
 
-# def update(task):
-#     sql = "UPDATE tasks SET (description, user_id, duration, completed) = (%s, %s, %s, %s) WHERE id = %s"
-#     values = [task.description, task.user.id, task.duration, task.completed, task.id]
-#     run_sql(sql, values)
+def update(game):
+    sql = "UPDATE games SET (player1_id, player2_id, score1, score2, completed) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [game.player1.id, game.player2.id, game.score[0], game.score[1], game.completed, game.id]
+    print(values)
+    run_sql(sql, values)

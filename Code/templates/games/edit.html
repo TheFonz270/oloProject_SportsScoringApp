@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/games/{{game.id}}" method="post">
+    <div>
+        <label for="Player1">Player 1:</label>
+        <select id="player1_id" name="player1_id" value="{{game.player1.name}}">
+          {% for player in all_players %} 
+                {% if player.id == game.player1.id %}
+                    <option value="{{ player.id }}" selected>{{ player.name }}</option>
+                {% else %}
+                    <option value="{{ player.id }}">{{ player.name }}</option>
+                {% endif %}
+           {% endfor %} 
+        </select>
+    </div>
+    <div>
+        <label for="Player2">Player 2:</label>
+        <select id="player2_id" name="player2_id" value="{{game.player2.name}}">
+          {% for player in all_players %} 
+            {% if player.id == game.player2.id %}
+                <option value="{{ player.id }}" selected>{{ player.name }}</option>
+             {% else %}
+                 <option value="{{ player.id }}">{{ player.name }}</option>
+             {% endif %}
+           {% endfor %} 
+        </select>
+    </div>
+    <div>
+      <label for="score1">Player 1 Score:</label>
+      <input type="number" id="score1" name="score1" value="{{game.score[0]}}" required>
+    </div>
+    <div>
+        <label for="score2">Player 2 Score:</label>
+        <input type="number" id="score2" name="score2" value="{{game.score[1]}}" required>
+    </div>
+    <div>
+        <label for="completed">Finished:</label>
+        <select id="completed" name="completed" value="game.completed">
+          <option value="True">True</option>
+          <option value="False">False</option>
+        </select>
+      </div>
+  
+    <button type="submit">Edit Game</button>
+  
+  </form>
+  
+  {% endblock %}

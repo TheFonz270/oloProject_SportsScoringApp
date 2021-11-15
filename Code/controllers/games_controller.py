@@ -41,3 +41,26 @@ def create_game():
 def show_game(id):
     game = game_repository.select(id)
     return render_template('games/game.html', game = game)
+
+# EDIT
+# GET '/games/<id>/edit'
+@games_blueprint.route("/games/<id>/edit", methods=['GET'])
+def edit_game(id):
+    game = game_repository.select(id)
+    players = player_repository.select_all()
+    return render_template('games/edit.html', game = game, all_players = players)
+
+# UPDATE
+# PUT '/games/<id>'
+@games_blueprint.route("/games/<id>", methods=['POST'])
+def update_game(id):
+    player1_id = request.form['player1_id']
+    player2_id = request.form['player2_id']
+    score1     = request.form['score1']
+    score2     = request.form['score2']
+    completed  = request.form['completed']
+    player1    = player_repository.select(player1_id)
+    player2    = player_repository.select(player2_id)
+    game       = Game(player1, player2, [score1, score2], completed, id)
+    game_repository.update(game)
+    return redirect('/games')
