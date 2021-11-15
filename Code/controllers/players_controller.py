@@ -34,3 +34,22 @@ def create_player():
     player_repository.save(player)
     return redirect('/players')
 # Receives the data from the form to insert into the database
+
+# UPDATE
+# # PUT '/tasks/<id>'
+# @tasks_blueprint.route("/tasks/<id>", methods=['POST'])
+# def update_task(id):
+#     description = request.form['description']
+#     user_id     = request.form['user_id']
+#     duration    = request.form['duration']
+#     completed   = request.form['completed']
+#     user        = user_repository.select(user_id)
+#     task        = Task(description, user, duration, completed, id)
+#     task_repository.update(task)
+#     return redirect('/tasks')
+
+# DELETE
+@players_blueprint.route("/players/<id>/delete", methods=['POST'])
+def delete_player(id):
+    player_repository.delete(id)
+    return redirect('/players')

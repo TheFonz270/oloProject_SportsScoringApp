@@ -11,7 +11,7 @@
         <p>{{player.wins}}:{{player.losses}}</p>
     </div>
     <div class="player_card_footer"></div>
-        <a href="/books/{{player.id}}/edit">Edit</a><a href="/books/{{player.id}}/delete">Delete</a>
+        <a href="/books/{{player.id}}/edit">Edit</a><form class="delete-form" action="/players/{{player.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
 </div>
 
 {% endblock %}
