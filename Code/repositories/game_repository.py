@@ -42,15 +42,15 @@ def select(id):
     return game
 
 
-# def delete_all():
-#     sql = "DELETE  FROM tasks"
-#     run_sql(sql)
+def delete_all():
+    sql = "DELETE  FROM games"
+    run_sql(sql)
 
 
-# def delete(id):
-#     sql = "DELETE  FROM tasks WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
+def delete(id):
+    sql = "DELETE  FROM games WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def update(game):

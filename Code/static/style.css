@@ -1,4 +1,109 @@
 body {
-    background-color:antiquewhite;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#eee;
     margin:0px;
+}
+
+nav {
+    background-color: tomato;
+}
+
+nav ul {
+    display:flex;
+    justify-content: center;
+    list-style: none;
+    margin:none;
+    padding:10px 0;
+}
+
+nav ul li {
+    padding:0 25px;
+}
+
+nav ul li a {
+    color:#333;
+    font-size:21px; 
+    text-decoration:none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 24px;
+    margin:15px 0 10px;
+}
+
+h2 {
+    font-size: 21px;
+    margin:10px 0;
+}
+
+h3 {
+    font-size: 18px;
+    margin:0 0 5px 0;
+}
+
+main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.player_card, .game_card {
+    border:2px solid #222;
+    background-color: #ccc;
+    padding:25px;
+    width:250px;
+    margin:15px auto;
+}
+
+.player_card_top {
+    display: flex;
+    padding-bottom:15px;
+}
+
+.player_card_left {
+    width:50%;
+}
+
+.player_card_right {
+    width:50%;
+    text-align:center;
+}
+
+.card_footer {
+    display:flex;
+    justify-content: space-around;
+}
+
+.card_footer a, .card_footer input {
+    display:block;
+    border:1px solid #222;
+    padding:7px;
+    background-color: #bbb;
+    color:#222;
+    text-decoration:none;
+    font-size:16px;
+}
+
+.card_footer a:hover, .card_footer input:hover {
+    background-color: #ddd
+}
+
+.sub-footer {
+    text-align:center;
+    margin-top:20px;
+}
+
+.game_card_top {
+    display:flex;
+    justify-content:space-between;
+}
+
+.game_card_mid {
+    text-align:center;
+    padding:8px 0;
 }

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="Game_card">
+    <div class="game_card">
         <div class="game_card_top">   
             <div>
                 <a href="/games/{{game.player1.id}}"><h3>{{game.player1.name}}</h3></a>
@@ -20,12 +20,12 @@
             {% if game.completed == True %}
             <p>Finished</p>
             {%else%}
-            <p>In Porgess</p>
+            <p>In Progress</p>
             {%endif%}
         </div>
-        <div class="game_card_footer"></div>
+        <div class="card_footer">
             <a href="/games/{{game.id}}/edit">Edit</a><form class="delete-form" action="/games/{{game.id}}/delete" method="POST"><input type="submit" name="Delete" id="Delete" value="Delete"></form>
-    </div>
+        </div>
 
     <div class="sub-footer">
         <a href="/games/new">Create New Game</a>

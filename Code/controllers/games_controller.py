@@ -64,3 +64,9 @@ def update_game(id):
     game       = Game(player1, player2, [score1, score2], completed, id)
     game_repository.update(game)
     return redirect('/games')
+
+# DELETE
+@games_blueprint.route("/games/<id>/delete", methods=['POST'])
+def delete_task(id):
+    game_repository.delete(id)
+    return redirect('/games')
