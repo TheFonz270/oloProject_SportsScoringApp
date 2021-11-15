@@ -19,3 +19,18 @@ def players():
 def show_player(id):
     player = player_repository.select(id)
     return render_template('players/player.html', player = player)
+
+# NEW
+@players_blueprint.route("/players/new", methods=['GET']) 
+def new_player(): 
+    return render_template("players/new.html")
+
+# CREATE
+@players_blueprint.route("/players",  methods=['POST'])
+def create_player():
+    name   = request.form['name']
+    army   = request.form['army']
+    player = Player(name, army)
+    player_repository.save(player)
+    return redirect('/players')
+# Receives the data from the form to insert into the database
