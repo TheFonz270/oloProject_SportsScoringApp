@@ -11,7 +11,7 @@ class Game():
     
     def reconcile_game(self):
         # set game to completed
-        self.completed = True
+        # self.completed = True
         # identify which player won 
         if self.score[0] > self.score[1]:
         # give the player that won a win

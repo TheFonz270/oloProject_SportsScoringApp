@@ -3,14 +3,14 @@
 
     <div class="game_card">
         <div class="game_card_top">   
-            <div>
+            <div {% if game.score[0] > game.score[1] and game.completed == True%} class="winner" {%elif game.score[1] > game.score[0] and game.completed == True%} class="loser"{%endif%}>
                 <a href="/players/{{game.player1.id}}"><h3>{{game.player1.name}}</h3></a>
                 <p>{{game.player1.army}}</p>
             </div>
              <div>    
                 <p class="vs">VS</p>
             </div>
-            <div>    
+            <div {% if game.score[1]>game.score[0] and game.completed == True%} class="winner" {%elif game.score[1] < game.score[0] and game.completed == True%} class="loser"{%endif%}>    
             <a href="/players/{{game.player2.id}}"><h3>{{game.player2.name}}</h3></a>
             <p>{{game.player2.army}}</p>
             </div>

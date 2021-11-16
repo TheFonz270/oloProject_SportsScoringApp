@@ -54,6 +54,22 @@ def select_by_player(player):
             games.append(game)
     return games
 
+def select_by_both_players(p1, p2):
+    games = []
+    sql = "SELECT * FROM games WHERE (player1_id = %s OR player2_id = %s) AND (player1_id = %s OR player2_id = %s)"
+    values = [p1.id, p1.id, p2.id, p2.id]
+    results = run_sql(sql, values)
+
+    if results is not None:
+        for row in results:
+            player1 = player_repository.select(row['player1_id'])
+            player2 = player_repository.select(row['player2_id'])
+            game = Game(player1, player2, [row['score1'], row['score2']], row['completed'], row['id'] )
+            games.append(game)
+        return games
+    else:
+        return None
+
 
 def delete_all():
     sql = "DELETE  FROM games"

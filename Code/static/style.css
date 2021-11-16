@@ -99,7 +99,7 @@ main {
     margin-top:20px;
 }
 
-.sub-footer a {
+.sub-footer a, .sub-footer input {
     display:block;
     border:1px solid #222;
     padding:7px;
@@ -108,7 +108,7 @@ main {
     text-decoration:none;
     font-size:16px;
     width:230px;
-    margin:0 auto;
+    margin:15px auto;
 }
 
 .game_card_top {

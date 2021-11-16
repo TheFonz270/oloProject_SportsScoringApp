@@ -4,6 +4,7 @@ from repositories import player_repository
 from repositories import game_repository
 from models.player import Player
 from models.game import Game
+from models import tournament
 
 
 games_blueprint = Blueprint("games", __name__)
@@ -32,11 +33,11 @@ def create_game():
     player1    = player_repository.select(player1_id)
     player2    = player_repository.select(player2_id)
     game       = Game(player1, player2, [score1, score2], completed)
-    game_repository.save(game)
-    if completed == "True":
+    if completed == True:
         game.reconcile_game()
         player_repository.update(player1)
         player_repository.update(player2)
+    game_repository.save(game)
     return redirect('/games')
 # Receives the data from the form to insert into the database
 
@@ -77,4 +78,10 @@ def update_game(id):
 @games_blueprint.route("/games/<id>/delete", methods=['POST'])
 def delete_task(id):
     game_repository.delete(id)
+    return redirect('/games')
+
+# GENERATE GAME ROUND
+@games_blueprint.route("/games/generate", methods=['POST'])
+def generate_round():
+    tournament.create_next_round()
     return redirect('/games')
