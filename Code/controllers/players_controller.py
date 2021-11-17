@@ -12,14 +12,16 @@ players_blueprint = Blueprint("players", __name__)
 @players_blueprint.route("/players")
 def players():
     players = player_repository.select_all()
-    return render_template("players/index.html", all_players=players)
+    players_length = len(players)
+    return render_template("players/index.html", all_players=players, players_length = players_length)
 
 # SHOW
 @players_blueprint.route("/players/<id>", methods=['GET'])
 def show_player(id):
     player = player_repository.select(id)
     games = game_repository.select_by_player(player)
-    return render_template('players/player.html', player = player, player_games=games)
+    player_games_length = len(games)
+    return render_template('players/player.html', player = player, player_games=games, player_games_length = player_games_length)
 
 # EDIT
 # GET '/players/<id>/edit'
@@ -45,7 +47,9 @@ def update_player(id):
 # NEW
 @players_blueprint.route("/players/new", methods=['GET']) 
 def new_player(): 
-    return render_template("players/new.html")
+    players = player_repository.select_all()
+    players_length = len(players)
+    return render_template("players/new.html", players_length = players_length)
 
 # CREATE
 @players_blueprint.route("/players",  methods=['POST'])

@@ -90,16 +90,16 @@ main {
     font-size:16px;
 }
 
-.card_footer a:hover, .card_footer input:hover, .sub-footer a:hover {
+.card_footer a:hover, .card_footer input:hover, .sub-footer a:hover, .sub-header a:hover {
     background-color: #ddd
 }
 
-.sub-footer {
+.sub-footer, .sub-header {
     text-align:center;
     margin-top:20px;
 }
 
-.sub-footer a, .sub-footer input {
+.sub-footer a, .sub-footer input, .sub-header a, .sub-header input {
     display:block;
     border:1px solid #222;
     padding:7px;
@@ -111,9 +111,11 @@ main {
     margin:15px auto;
 }
 
-.sub-footer a {
+.sub-footer a, .sub-header a {
     width:214px;
 }
+
+
 
 .game_card_top {
     display:flex;

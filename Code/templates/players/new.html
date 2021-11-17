@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h2>New Player</h2>
+<p>Number of players: {{ players_length }}</p>
 <form class="form_page" action="/players" method="post">
     <div>
       <label for="name">Name:</label>

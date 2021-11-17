@@ -13,7 +13,8 @@ games_blueprint = Blueprint("games", __name__)
 @games_blueprint.route("/games")
 def games():
     games = game_repository.select_all()
-    return render_template("games/index.html", all_games=games)
+    games_length = len(games)
+    return render_template("games/index.html", all_games=games, games_length = games_length)
 
 
 # NEW
