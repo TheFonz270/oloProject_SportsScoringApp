@@ -31,8 +31,9 @@
 {% endfor %}
 
 <div class="sub-footer">
+    <form class="generate-form" action="/games/generate" method="POST"><input type="submit" name="Generate" id="Generate" value="Generate Swiss Round"></form>
+    <form class="random-form" action="/games/random" method="POST"><input type="submit" name="Random" id="Random" value="Generate Random Round"></form>
     <a href="/games/new">Create New Game</a>
-    <form class="generate-form" action="/games/generate" method="POST"><input type="submit" name="Generate" id="Generate" value="Generate New Round"></form>
 </div>
 
 {% endblock %}

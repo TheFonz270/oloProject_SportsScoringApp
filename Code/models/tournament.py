@@ -14,7 +14,6 @@ def create_next_round():
     
     for player in players:
         if player in temp_list:
-            print(player.__dict__)
             for p in temp_list:
                 if len(game_repository.select_by_both_players(player, p)) == 0 and player.name is not p.name:
                     game = Game(player, p)
@@ -25,14 +24,15 @@ def create_next_round():
                     break
         
     
-    #Random
-#     random.shuffle(players)
-#     game = Game(players[0], players[1])
-#     game_repository.save(game)
-#     game = Game(players[2], players[3])
-#     game_repository.save(game)
-#     game = Game(players[4], players[5])
-#     game_repository.save(game)
-#     game = Game(players[6], players[7])
-#     game_repository.save(game)
+def create_random_round():
+    players = player_repository.select_all()
+    random.shuffle(players)
+    game = Game(players[0], players[1])
+    game_repository.save(game)
+    game = Game(players[2], players[3])
+    game_repository.save(game)
+    game = Game(players[4], players[5])
+    game_repository.save(game)
+    game = Game(players[6], players[7])
+    game_repository.save(game)
     

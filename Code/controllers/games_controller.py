@@ -80,8 +80,14 @@ def delete_task(id):
     game_repository.delete(id)
     return redirect('/games')
 
-# GENERATE GAME ROUND
+# GENERATE SWISS ROUND
 @games_blueprint.route("/games/generate", methods=['POST'])
 def generate_round():
     tournament.create_next_round()
+    return redirect('/games')
+
+# GENERATE Random ROUND
+@games_blueprint.route("/games/random", methods=['POST'])
+def generate_random_round():
+    tournament.create_random_round()
     return redirect('/games')

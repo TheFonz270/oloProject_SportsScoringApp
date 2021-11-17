@@ -54,7 +54,10 @@ def create_player():
     army   = request.form['army']
     player = Player(name, army)
     player_repository.save(player)
-    return redirect('/players')
+    if request.form["action"] == "one":
+        return redirect('/players')
+    elif request.form["action"] == "two":
+        return redirect('/players/new')
 # Receives the data from the form to insert into the database
 
 # DELETE

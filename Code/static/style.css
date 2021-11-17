@@ -111,9 +111,22 @@ main {
     margin:15px auto;
 }
 
+.sub-footer a {
+    width:214px;
+}
+
 .game_card_top {
     display:flex;
     justify-content:space-between;
+}
+.game_card_top div {
+    max-width:33%;
+    font-size:14px;
+    min-width:30%;
+}
+
+.vs {
+    text-align:center;
 }
 
 .game_card_mid {
@@ -152,12 +165,14 @@ main > ol > li {
     margin-bottom:15px;
 }
 
-.winner h3, .winner p {
+.winner h3, .winner p, .winner a{
     color:green;
+    text-decoration-color: green;
 }
 
-.loser h3, .loser p {
+.loser h3, .loser p, .loser a {
     color:red;
+    text-decoration-color: red;
 }
 
 .vs {

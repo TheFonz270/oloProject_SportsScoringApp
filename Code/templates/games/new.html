@@ -4,7 +4,8 @@
 <form class="form_page" action="/games" method="post">
     <div>
         <label for="Player1">Player 1:</label>
-        <select id="player1_id" name="player1_id">
+        <select id="player1_id" name="player1_id" required>
+          <option value="">Select Player</option>
           {% for player in all_players %} 
               <option value="{{ player.id }}">{{ player.name }}</option>
            {% endfor %} 
@@ -12,7 +13,8 @@
     </div>
     <div>
         <label for="Player2">Player 2:</label>
-        <select id="player2_id" name="player2_id">
+        <select id="player2_id" name="player2_id" required>
+          <option value="">Select Player</option>
           {% for player in all_players %} 
               <option value="{{ player.id }}">{{ player.name }}</option>
            {% endfor %} 

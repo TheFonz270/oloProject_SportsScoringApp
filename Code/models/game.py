@@ -22,8 +22,8 @@ class Game():
             self.player1.loser()
             self.player2.winner()
         # assign the pts for and againsy for each player
-        self.player1.pts_for = self.score[0]
-        self.player2.pts_against = self.score[0]
-        self.player1.pts_against = self.score[1]
-        self.player2.pts_for = self.score[1]
+        self.player1.pts_for += int(self.score[0])
+        self.player2.pts_against += int(self.score[0])
+        self.player1.pts_against += int(self.score[1])
+        self.player2.pts_for += int(self.score[1])
             
