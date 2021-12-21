@@ -26,7 +26,7 @@ then given the results of those 4 games should be able to generate the next roun
 using the Swiss pairings system.
 
 
-limitations
+Current limitations
 _____________________________________________________________________________________________
 
 The app does not track ties, if one of your game's results in a tie, you should resolve this outside of the app, 
@@ -44,6 +44,8 @@ Please note that in it's current version deleting/updating games with different 
 You can update players manually to rectify this before generating further game rounds.
 
 Players must have unique names for the swiss rounds to generate properly.
+
+After every player has played each other once, Swiss rounds will stop working, random rounds still work.
 
 To Run
 _____________________________________________________________________________________________

@@ -21,6 +21,7 @@ def select_all():
     for row in results:
         player = Player(row['name'], row['army'], row['wins'], row['losses'], row['pts_for'], row['pts_against'], row['id'] )
         players.append(player)
+        players = sorted(players, key=lambda player: player.pts_for - player.pts_against, reverse=True)
     return sorted(players, key=lambda player: player.wins, reverse=True)
 
 
